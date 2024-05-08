@@ -2,8 +2,6 @@ import os
 import requests
 import json
 from bs4 import BeautifulSoup
-import xmltodict
-import xml.parsers.expat
 
 
 def download_file(url, save_path):
@@ -35,7 +33,8 @@ def scrape_website():
                 text = option.text
                 key = text[:7]
                 value_html = option['value']
-                value = value_html[:6] + 'xml'
+                value = value_html[:6] + '.xml'
+                print(value)
 
                 if key != 'Please':
                     link = f'http://mycelcat.unizulu.ac.za/{value}'
@@ -59,7 +58,7 @@ def scrape_website():
             json_path = os.path.join(save_directory2, 'timetable.json')
 
             with open(json_path, 'w') as json_file:
-                json_file.write(json_data)
+                json_file.write(json_data) #this one maps module code with file name 
 
             print('Data saved to timetable.json')
         else:
@@ -67,4 +66,4 @@ def scrape_website():
     else:
         print('Failed to fetch the webpage')
 
-    print('done')
+    print('done boooooooooooooii beVictorious ')
