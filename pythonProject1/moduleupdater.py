@@ -33,7 +33,7 @@ def scrape_website():
                 text = option.text
                 key = text[:7]
                 value_html = option['value']
-                value = value_html[:6] + '.xml'
+                value = value_html.replace('.html', '.xml')
                 print(value)
 
                 if key != 'Please':
